@@ -27,8 +27,8 @@ function displayUserModal(user) {
   document.body.insertAdjacentHTML("beforeend", userModalHTML);
 }
 
-// Add a click event listener to the #gallery div
-galleryDiv.addEventListener("click", (e) => {
+// Add a click event listener to the document
+document.addEventListener("click", (e) => {
   // Find the nearest ancestor element with the class card
   const userCard = e.target.closest(".card");
   // If a user card was not clicked then stop code from executing
