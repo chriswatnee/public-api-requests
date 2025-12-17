@@ -27,20 +27,32 @@ function displayUserModal(user) {
   document.body.insertAdjacentHTML("beforeend", userModalHTML);
 }
 
+// Close user modal
+function closeUserModal(){
+  // DOM element selection
+  const modalContainerDiv = document.querySelector(".modal-container");
+  // Remove .modal-container div
+  modalContainerDiv.parentNode.removeChild(modalContainerDiv);
+}
+
 // Add a click event listener to the document
 document.addEventListener("click", (e) => {
-  // Find the nearest ancestor element with the class card
+  // Identify the clicked element's relationship to the user card, modal close button, or modal container
   const userCard = e.target.closest(".card");
+  const modalCloseBtn = e.target.closest("#modal-close-btn");
+  const modalContainer = e.target.matches(".modal-container");
   // If a user card was not clicked then stop code from executing
-  if (!userCard) {
-    return;
+  if (userCard) {
+    // Get the user's email from the card's email data attribute
+    const userEmail = userCard.dataset.email;
+    // Get the user from the email
+    const user = users.find((user) => user.email === userEmail);
+    // Display modal for user
+    displayUserModal(user);
+  } else if (modalCloseBtn || modalContainer) {
+    // Close user modal
+    closeUserModal();
   }
-  // Get the user's email from the card's email data attribute
-  const userEmail = userCard.dataset.email;
-  // Get the user from the email
-  const user = users.find((user) => user.email === userEmail);
-  // Display modal for user
-  displayUserModal(user);
 });
 
 // Display users
