@@ -51,7 +51,7 @@ function displayUsers(users) {
     const userHTML = `
       <div class="card" data-email="${user.email}">
         <div class="card-img-container">
-          <img class="card-img" src="${user.picture.thumbnail}" alt="profile picture">
+          <img class="card-img" src="${user.picture.medium}" alt="profile picture">
         </div>
         <div class="card-info-container">
           <h3 id="name" class="card-name cap">${user.name.first} ${user.name.last}</h3>
