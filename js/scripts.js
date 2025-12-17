@@ -6,7 +6,9 @@ const galleryDiv = document.querySelector("#gallery");
 
 // Display user modal
 function displayUserModal(user) {
+  // Converts a date string into a US-formatted date (MM/DD/YYYY)
   const getFormattedDate = (dateStr) => new Date(dateStr).toLocaleDateString("en-US");
+   // Modal HTML string
   const userModalHTML = `
     <div class="modal-container">
       <div class="modal">
@@ -24,6 +26,7 @@ function displayUserModal(user) {
       </div>
     </div>
   `;
+  // Appends the user modal HTML to the end of the document body
   document.body.insertAdjacentHTML("beforeend", userModalHTML);
 }
 
@@ -99,4 +102,5 @@ async function getUsers() {
   }
 }
 
+// Trigger the asynchronous fetch for user data
 getUsers();
